@@ -7,9 +7,9 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
-        >
+        android:id="@+id/cl_detail_list">
 
         <ImageView
             android:id="@+id/iv_article_url"
@@ -63,37 +63,39 @@
                         android:text="Date Published"
                         />
 
-                    <TextView
-                        android:id="@+id/tv_description"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        android:gravity="center"
-                        android:textSize="20sp"
-                        android:textStyle="bold"
-                        android:text="Description"
-                        />
+                  <TextView
+                      android:id="@+id/tv_description"
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      app:layout_constraintTop_toTopOf="parent"
+                      app:layout_constraintStart_toStartOf="parent"
+                      android:gravity="center"
+                      android:textSize="20sp"
+                      android:textStyle="bold"
+                      android:text="Description"
+                      />
 
-                      <TextView
-                          android:id="@+id/tv_content"
-                          android:layout_width="match_parent"
-                          android:layout_height="wrap_content"
-                          app:layout_constraintTop_toTopOf="parent"
-                          app:layout_constraintStart_toStartOf="parent"
-                          android:gravity="center"
-                          android:textSize="20sp"
-                          android:textStyle="bold"
-                          android:text="Content"
-                          />
+                  <TextView
+                      android:id="@+id/tv_content"
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      app:layout_constraintTop_toTopOf="parent"
+                      app:layout_constraintStart_toStartOf="parent"
+                      android:gravity="center"
+                      android:textSize="20sp"
+                      android:textStyle="bold"
+                      android:text="Content"
+                      />
 
-                    <TextView
-                        android:id="@+id/tv_source"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="source information"
-                        android:layout_margin="5dp"
-                        />
+                  <TextView
+                      android:id="@+id/tv_source"
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:text="source information"
+                      android:layout_margin="5dp"
+                      />
+
+
 
         </LinearLayout>
     </LinearLayout>
