@@ -64,7 +64,7 @@
                         />
 
                     <TextView
-                        android:id="@+id/tv_content"
+                        android:id="@+id/tv_description"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         app:layout_constraintTop_toTopOf="parent"
@@ -72,9 +72,20 @@
                         android:gravity="center"
                         android:textSize="20sp"
                         android:textStyle="bold"
-
                         android:text="Description"
                         />
+
+                      <TextView
+                          android:id="@+id/tv_content"
+                          android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          app:layout_constraintTop_toTopOf="parent"
+                          app:layout_constraintStart_toStartOf="parent"
+                          android:gravity="center"
+                          android:textSize="20sp"
+                          android:textStyle="bold"
+                          android:text="Content"
+                          />
 
                     <TextView
                         android:id="@+id/tv_source"
