@@ -21,10 +21,11 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-      val hostFragment =
-          supportFragmentManager.findFragmentById(R.id.frag_container) as NavHostFragment
-          binding.bottomNav.setupWithNavController(hostFragment.navController)
-          setupActionBarWithNavController(hostFragment.navController)
+      val hostFragment = supportFragmentManager.findFragmentById(R.id.frag_container) as NavHostFragment
+
+      binding.bottomNav.setupWithNavController(hostFragment.navController)
+
+      setupActionBarWithNavController(hostFragment.navController)
     }
 
 

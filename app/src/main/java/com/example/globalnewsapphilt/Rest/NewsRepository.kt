@@ -1,40 +1,50 @@
 package com.example.globalnewsapphilt.Rest
 
+import android.content.ContentValues.TAG
+import android.util.Log
+import com.example.globalnewsapphilt.Model.Article
 import com.example.globalnewsapphilt.Model.Domain.NewsDomain
 import com.example.globalnewsapphilt.Model.Domain.mapToDomainNews
+import com.example.globalnewsapphilt.Model.NewsResponse
 import com.example.globalnewsapphilt.Utilities.FailureResponse
 import com.example.globalnewsapphilt.Utilities.NullNewsResponse
 import com.example.globalnewsapphilt.Utilities.UIState
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
+import retrofit2.Response
 import javax.inject.Inject
+import kotlin.math.log
 
 interface NewsRepository {
-    fun getNews(from: String, to: String): Flow<UIState<List<NewsDomain>>>
+    fun getNews(country: String): Flow<UIState<NewsResponse>>
 }
 
-
+private const val TAG = "NewsRepository"
 
 class NewsRepositoryImpl @Inject constructor(
     private val newsApi: NewsApi
-):NewsRepository{
+) : NewsRepository {
 
-    override fun getNews(from: String, to: String):
-            Flow<UIState<List<NewsDomain>>> = flow{
+    override fun getNews(country: String):Flow<UIState<NewsResponse>> = flow {
 
         emit(UIState.LOADING)
 
-        try{
-            val response = newsApi.getNews(from, to)
-            if(response.isSuccessful){
-                response.body()?.let{
-                    emit(UIState.SUCCESS(it.articles.mapToDomainNews()))
-                }?: throw NullNewsResponse()
-            }else{
+        try {
+            val response = newsApi.getNews(country)
+            if (response.isSuccessful) {
+                response.body()?.let {
+                    println("Repository here $it")
+                    emit(UIState.SUCCESS(it))
+
+                } ?: throw NullNewsResponse()
+
+            } else {
                 throw FailureResponse(response.errorBody()?.string())
+
             }
-        }catch(e: Exception)
-        { emit(UIState.ERROR(e))
+        } catch (e: Exception) {
+            emit(UIState.ERROR(e))
+            Log.e(TAG, "Respository.getNews: ${e.localizedMessage}",e)
         }
 
     }
