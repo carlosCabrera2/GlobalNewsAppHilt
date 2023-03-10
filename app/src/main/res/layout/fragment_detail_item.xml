@@ -1,103 +1,107 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    >
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:layout_width="match_parent">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:id="@+id/cl_detail_list"
         android:layout_height="wrap_content"
+        android:layout_width="match_parent"
         android:orientation="vertical"
-        android:id="@+id/cl_detail_list">
+        app:layout_constraintTop_toTopOf="parent">
 
-        <ImageView
-            android:id="@+id/iv_article_url"
-            android:layout_width="390dp"
-            android:layout_height="390dp"
-            android:layout_margin="10dp"
-            android:scaleType="centerCrop"
-            app:layout_constraintTop_toTopOf="@+id/iv_article_url"
+
+    <ImageView
+        android:contentDescription="@string/article_image"
+        android:id="@+id/iv_article_url"
+        android:layout_height="390dp"
+        android:layout_margin="10dp"
+        android:layout_width="390dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/iv_article_url" />
+
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:layout_width="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:gravity="center"
+            android:id="@+id/tv_title"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="Title"
+            android:textSize="30sp"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:gravity="start"
+            android:id="@+id/tv_author"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="Author Author"
+            android:textSize="15sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+
             />
 
-              <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:orientation="vertical"
-                >
+        <TextView
+            android:gravity="start"
+            android:id="@+id/tv_publishing_date"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="Date Published"
+            android:textSize="13sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-                    <TextView
-                        android:id="@+id/tv_title"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        android:textSize="30sp"
-                        android:textStyle="bold"
-                        android:text="Title"
-                        android:gravity="center"
-                        />
+        <TextView
+            android:gravity="center"
+            android:id="@+id/tv_description"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="Description"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-                    <TextView
-                        android:id="@+id/tv_author"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        android:gravity="start"
-                        android:textSize="15sp"
-                        android:text="Author Author"
+        <TextView
+            android:gravity="center"
+            android:id="@+id/tv_content"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="Content"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-                        />
+        <TextView
+            android:id="@+id/tv_source"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_width="match_parent"
+            android:text="source information" />
 
-                    <TextView
-                        android:id="@+id/tv_publishing_date"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        android:gravity="start"
-                        android:textSize="13sp"
-                        android:text="Date Published"
-                        />
-
-                  <TextView
-                      android:id="@+id/tv_description"
-                      android:layout_width="match_parent"
-                      android:layout_height="wrap_content"
-                      app:layout_constraintTop_toTopOf="parent"
-                      app:layout_constraintStart_toStartOf="parent"
-                      android:gravity="center"
-                      android:textSize="20sp"
-                      android:textStyle="bold"
-                      android:text="Description"
-                      />
-
-                  <TextView
-                      android:id="@+id/tv_content"
-                      android:layout_width="match_parent"
-                      android:layout_height="wrap_content"
-                      app:layout_constraintTop_toTopOf="parent"
-                      app:layout_constraintStart_toStartOf="parent"
-                      android:gravity="center"
-                      android:textSize="20sp"
-                      android:textStyle="bold"
-                      android:text="Content"
-                      />
-
-                  <TextView
-                      android:id="@+id/tv_source"
-                      android:layout_width="match_parent"
-                      android:layout_height="wrap_content"
-                      android:text="source information"
-                      android:layout_margin="5dp"
-                      />
-
-
-
-        </LinearLayout>
     </LinearLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
+

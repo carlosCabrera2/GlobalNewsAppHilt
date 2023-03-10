@@ -2,8 +2,8 @@ package com.example.globalnewsapphilt.Model.Domain
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.example.globalnewsapphilt.Model.Article
-import com.example.globalnewsapphilt.Model.Source
+import com.example.globalnewsapphilt.Model.NewsModel.Article
+import com.example.globalnewsapphilt.Model.NewsModel.Source
 
 @Entity(tableName = "news")
 data class NewsDomain (

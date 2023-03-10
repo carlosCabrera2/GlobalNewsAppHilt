@@ -33,7 +33,4 @@ class MainActivity : AppCompatActivity() {
         val navController = findNavController(R.id.frag_container)
         return navController.navigateUp() || super.onSupportNavigateUp()
     }
-
-
-
 }

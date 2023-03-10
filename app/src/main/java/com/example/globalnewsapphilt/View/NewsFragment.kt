@@ -6,11 +6,9 @@ import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
-import android.view.View.OnClickListener
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.globalnewsapphilt.Model.Article
 import com.example.globalnewsapphilt.R
 import com.example.globalnewsapphilt.Utilities.UIState
 import com.example.globalnewsapphilt.View.Adapter.NewsAdapter
@@ -34,7 +32,7 @@ class NewsFragment : BaseFragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding.rvCommonView.apply {
             layoutManager = LinearLayoutManager(
                 requireContext(),
@@ -44,7 +42,6 @@ class NewsFragment : BaseFragment() {
             getNews()
             adapter = newsAdapter
         }
-
 
         newsViewModel.getNews()
 
@@ -62,8 +59,6 @@ class NewsFragment : BaseFragment() {
                 is UIState.SUCCESS -> {
                     Log.d(TAG, "getNews: isSuccessful  ${it.response}")
                   it.response.articles?.let {
-//                      callDetail(it)
-
                       newsAdapter.updateItems(it)
                   }
                 }
@@ -83,13 +78,4 @@ class NewsFragment : BaseFragment() {
         }
     }
 
-    fun callDetail(articles: List<Article>) {
-//            Log.d(TAG, "getNews: isSuccessful  ${it.response}")
-            articles.let { it ->
-                binding.rvCommonView.adapter = NewsAdapter(articles as MutableList<Article>) {
-                    newsViewModel.setArticle(it)
-                }
-
-            }
-        }
-    }
+ }

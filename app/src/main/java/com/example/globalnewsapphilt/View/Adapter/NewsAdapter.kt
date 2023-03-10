@@ -5,9 +5,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.globalnewsapphilt.Model.Article
-import com.example.globalnewsapphilt.Model.Domain.NewsDomain
-import com.example.globalnewsapphilt.Model.NewsResponse
+import com.example.globalnewsapphilt.Model.NewsModel.Article
 import com.example.globalnewsapphilt.R
 import com.example.globalnewsapphilt.databinding.FragmentMainItemBinding
 

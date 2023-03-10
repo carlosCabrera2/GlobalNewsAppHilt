@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">GlobalNewsAppHilt</string>
+    <string name="article_image">article image</string>
 </resources>

@@ -9,7 +9,7 @@
         <fragment
             android:id="@+id/menu_map"
             android:name="com.example.globalnewsapphilt.View.MapFragment"
-            android:label="Map"
+            android:label="Select a country to see its news"
             tools:layout="@layout/fragment_map_item"
             >
                 <action

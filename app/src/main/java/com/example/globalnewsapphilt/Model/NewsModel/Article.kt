@@ -1,4 +1,4 @@
-package com.example.globalnewsapphilt.Model
+package com.example.globalnewsapphilt.Model.NewsModel
 
 
 import com.google.gson.annotations.SerializedName

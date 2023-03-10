@@ -1,17 +1,12 @@
 package com.example.globalnewsapphilt.View
 
-import android.app.AlertDialog
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.bumptech.glide.Glide
-import com.example.globalnewsapphilt.Model.Article
-import com.example.globalnewsapphilt.Model.NewsResponse
+import com.example.globalnewsapphilt.Model.NewsModel.Article
 import com.example.globalnewsapphilt.R
-import com.example.globalnewsapphilt.Utilities.UIState
-import com.example.globalnewsapphilt.View.Adapter.NewsAdapter
-import com.example.globalnewsapphilt.ViewModel.NewsViewModel
 
 import com.example.globalnewsapphilt.databinding.FragmentDetailItemBinding
 

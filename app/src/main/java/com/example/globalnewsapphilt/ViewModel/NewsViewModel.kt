@@ -1,13 +1,13 @@
 package com.example.globalnewsapphilt.ViewModel
 
-import androidx.core.content.contentValuesOf
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.globalnewsapphilt.Model.Article
-import com.example.globalnewsapphilt.Model.Domain.NewsDomain
-import com.example.globalnewsapphilt.Model.NewsResponse
+import com.example.globalnewsapphilt.Model.CountryModel.CountryResponse
+import com.example.globalnewsapphilt.Model.CountryModel.CountryResponseItem
+import com.example.globalnewsapphilt.Model.NewsModel.Article
+import com.example.globalnewsapphilt.Model.NewsModel.NewsResponse
 import com.example.globalnewsapphilt.Rest.NewsRepository
 import com.example.globalnewsapphilt.Utilities.UIState
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -23,36 +23,42 @@ class NewsViewModel @Inject constructor(
     private val ioDispatcher: CoroutineDispatcher= Dispatchers.IO
 ): ViewModel() {
 
-
-
-
     var selectedArticle : Article = Article()
 
+//    var selectCountry : CountryResponseItem = CountryResponseItem()
 
     private val _news: MutableLiveData<UIState<NewsResponse>> = MutableLiveData(UIState.LOADING)
     val news: LiveData<UIState<NewsResponse>> get() = _news
 
-    private val  _article: MutableLiveData<UIState<NewsResponse>> = MutableLiveData(UIState.LOADING)
-    val article: LiveData<UIState<NewsResponse>> get() =_article
+//    private val _country: MutableLiveData<UIState<CountryResponse>> = MutableLiveData(UIState.LOADING)
+//    val country: LiveData<UIState<CountryResponse>> get() = _country
 
-    private val  _selected: MutableLiveData<Article> = MutableLiveData<Article>()
-    val selected: LiveData<Article> get() =_selected
+
 
     init{
         getNews()
+//        getCountry()
     }
 
+    fun getNews(country: String? = null) {
 
-    fun getNews() {
             viewModelScope.launch(ioDispatcher){
-                newsRepository.getNews(country = "us").collect{
-                    println("Here viewModel $it")
-                    _news.postValue(it)
+                country?.let {
+                    newsRepository.getNews(it).collect{
+                        println("Here viewModel $it")
+                        _news.postValue(it)
+                    }
                 }
         }
     }
 
-    fun setArticle(art: Article){//just index
-        _selected.postValue(art)
-    }
+//    private fun getCountry() {
+//            viewModelScope.launch(ioDispatcher) {
+//                newsRepository.getCountry(country).collect{
+//                    _country.postValue(it)
+//                }
+//            }
+//    }
+
+
 }

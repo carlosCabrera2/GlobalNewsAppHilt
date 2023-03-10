@@ -1,6 +1,7 @@
-package com.example.globalnewsapphilt.Model
+package com.example.globalnewsapphilt.Model.NewsModel
 
 
+import com.example.globalnewsapphilt.Model.NewsModel.Article
 import com.google.gson.annotations.SerializedName
 
 data class NewsResponse(
