@@ -1,9 +1,7 @@
 package com.example.globalnewsapphilt.Rest
 
 
-import com.example.globalnewsapphilt.Model.CountryModel.CountryResponse
 import com.example.globalnewsapphilt.Model.NewsModel.NewsResponse
-import com.example.globalnewsapphilt.Rest.CountryApi.Companion.SEARCH_PATH
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -30,23 +28,7 @@ interface NewsApi {
 
 
 
- interface CountryApi {
 
-         @GET(SEARCH_PATH)
-         suspend fun getCountry(
-            @Path("") country: String?
-         ): Response<CountryResponse>
-
-
-
-       companion object{
-           //    https://restcountries.com/v2/name/peru
-
-           const val BASE_URL ="https://restcountries.com/"
-           private const val SEARCH_PATH = "v2/name/"
-       }
-
- }
 
 
 

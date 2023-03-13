@@ -2,7 +2,6 @@ package com.example.globalnewsapphilt.Rest
 
 import android.content.ContentValues.TAG
 import android.util.Log
-import com.example.globalnewsapphilt.Model.CountryModel.CountryResponse
 import com.example.globalnewsapphilt.Model.NewsModel.NewsResponse
 import com.example.globalnewsapphilt.Utilities.FailureResponse
 import com.example.globalnewsapphilt.Utilities.NullNewsResponse
@@ -13,7 +12,6 @@ import javax.inject.Inject
 
 interface NewsRepository {
     fun getNews(country: String): Flow<UIState<NewsResponse>>
-//    fun getCountry(country: String): Flow<UIState<CountryResponse>>
 }
 
 private const val TAG = "NewsRepository"
@@ -45,23 +43,5 @@ class NewsRepositoryImpl @Inject constructor(
             Log.e(TAG, "Respository.getNews: ${e.localizedMessage}",e)
         }
     }
-
-//    override fun getCountry(country: String): Flow<UIState<CountryResponse>> = flow{
-//
-//        emit(UIState.LOADING)
-//
-//        try {
-//            val response = countryApi.getCountry(country)
-//            if (response.isSuccessful){
-//                response.body()?.let {
-//                    emit(UIState.SUCCESS(it))
-//                }?: throw NullNewsResponse()
-//            }else{
-//                throw FailureResponse(response.errorBody()?.string())
-//            }
-//        }catch (e: Exception){
-//            emit(UIState.ERROR(e))
-//        }
-//    }
 
 }

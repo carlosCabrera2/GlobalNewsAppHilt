@@ -2,11 +2,15 @@ package com.example.globalnewsapphilt.View
 
 import android.app.AlertDialog
 import android.content.ContentValues.TAG
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
+import android.widget.SearchView
+import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.globalnewsapphilt.R
@@ -14,7 +18,7 @@ import com.example.globalnewsapphilt.Utilities.UIState
 import com.example.globalnewsapphilt.View.Adapter.NewsAdapter
 import com.example.globalnewsapphilt.databinding.MainRecyclerViewBinding
 
-class NewsFragment : BaseFragment() {
+class NewsFragment : BaseFragment(), SearchView.OnQueryTextListener {
 
     private val binding by lazy {
         MainRecyclerViewBinding.inflate(layoutInflater)
@@ -33,6 +37,9 @@ class NewsFragment : BaseFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+
+        binding.svSearch.setOnQueryTextListener(this)
+
         binding.rvCommonView.apply {
             layoutManager = LinearLayoutManager(
                 requireContext(),
@@ -78,4 +85,56 @@ class NewsFragment : BaseFragment() {
         }
     }
 
+    private fun searchByCountry(query: String){
+        newsViewModel.getNews(query)
+        hideKeyboard()
+    }
+
+    private fun hideKeyboard(){
+        val keyboard= activity?.getSystemService(Context.INPUT_METHOD_SERVICE)
+                as InputMethodManager
+        keyboard.hideSoftInputFromWindow(binding.svSearch.windowToken, 0)
+    }
+
+   override fun onQueryTextSubmit(query: String?): Boolean{
+        if (!query.isNullOrEmpty()){
+            searchByCountry(query)
+            Toast.makeText(requireContext(),
+                "$query", Toast.LENGTH_LONG).show()
+        }
+        return true
+    }
+
+    override fun onQueryTextChange(newSearch: String?): Boolean = true
+
  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

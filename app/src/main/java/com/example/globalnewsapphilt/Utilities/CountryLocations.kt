@@ -2,21 +2,27 @@ package com.example.globalnewsapphilt.Utilities
 
 import com.google.android.gms.maps.model.LatLng
 
-//data class Countries(val country: String, val location: LatLng)
+data class Countries(val country: String, val countryCode: String, val location: LatLng)
+
+// val countryList = listOf(
+//    Countries("United Arab Emirates","ae" , LatLng(23.424076,	53.847818),
+//    )
 //
-// val countries = listOf(
-//    Countries("ae" , LatLng(23.424076,	53.847818))
+//
+//
 //)
-//
 
 
 
-enum class MyEnum(val country: String){
-    MX("Mexico"),
-    VE("Venezuela"),
-    US("United State"),
-    CA("Canada")
-}
+
+//enum class MyEnum(val country: String, val countryCode: String, location: LatLng){
+//    Mexico("Mexico", "mx", LatLng(23.634501,-102.552784)),
+//    ("Venezuela"),
+//    US("United State","us"),
+//    CA("Canada")
+//}
+
+
 open class CountryLocations {
 
     val ae = LatLng(23.424076,	53.847818)

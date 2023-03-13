@@ -1,45 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<navigation xmlns:android=
-    "http://schemas.android.com/apk/res/android"
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/news_navigation"
     app:startDestination="@id/menu_map">
 
-        <fragment
-            android:id="@+id/menu_map"
-            android:name="com.example.globalnewsapphilt.View.MapFragment"
-            android:label="Select a country to see its news"
-            tools:layout="@layout/fragment_map_item"
-            >
-                <action
-                    android:id="@+id/action_menu_map_to_menu_home"
-                    app:destination="@id/menu_home" />
-        </fragment>
+    <fragment
+        android:id="@+id/menu_map"
+        android:name="com.example.globalnewsapphilt.View.MapFragment"
+        android:label="Select a country to see its news"
+        tools:layout="@layout/fragment_map_item">
 
-        <fragment
-            android:id="@+id/menu_home"
-            android:name="com.example.globalnewsapphilt.View.NewsFragment"
-            android:label="News List"
-            tools:layout="@layout/fragment_main_item"
-            >
-                <action
-                    android:id="@+id/action_menu_home_to_menu_detail"
-                    app:destination="@id/menu_detail" />
-                <action
-                    android:id="@+id/action_menu_home_to_menu_map"
-                    app:destination="@id/menu_map" />
-        </fragment>
+        <action
+            android:id="@+id/action_menu_map_to_menu_home"
+            app:destination="@id/menu_home_news" />
+    </fragment>
 
-        <fragment
-            android:id="@+id/menu_detail"
-            android:name="com.example.globalnewsapphilt.View.ArticleFragment"
-            android:label="Article Info"
-            tools:layout= "@layout/fragment_detail_item"
-            >
-                <action
-                    android:id="@+id/action_menu_detail_to_menu_home"
-                    app:destination="@id/menu_home" />
-        </fragment>
+    <fragment
+        android:id="@+id/menu_home_news"
+        android:name="com.example.globalnewsapphilt.View.NewsFragment"
+        android:label="News List"
+        tools:layout="@layout/main_recycler_view">
+        <action
+            android:id="@+id/action_menu_home_to_menu_detail"
+            app:destination="@id/menu_detail" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/menu_detail"
+        android:name="com.example.globalnewsapphilt.View.ArticleFragment"
+        android:label="Article Info"
+        tools:layout="@layout/fragment_detail_item">
+
+    </fragment>
 
 </navigation>

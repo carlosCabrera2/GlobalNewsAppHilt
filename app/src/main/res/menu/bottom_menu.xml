@@ -3,13 +3,13 @@
 
     <item
         android:id="@+id/menu_map"
-        android:title="Map"
-        android:icon="@drawable/baseline_map_24"/>
+        android:icon="@drawable/baseline_map_24"
+        android:title="Map" />
 
 
     <item
-        android:id="@+id/menu_home"
-        android:title="News"
-        android:icon="@drawable/baseline_newspaper_24"/>
+        android:id="@+id/menu_home_news"
+        android:icon="@drawable/baseline_newspaper_24"
+        android:title="News" />
 
 </menu>
