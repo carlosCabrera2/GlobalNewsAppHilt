@@ -14,7 +14,10 @@ import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.globalnewsapphilt.R
+import com.example.globalnewsapphilt.Utilities.Countries
+import com.example.globalnewsapphilt.Utilities.NullSearchResponse
 import com.example.globalnewsapphilt.Utilities.UIState
+import com.example.globalnewsapphilt.Utilities.countryList
 import com.example.globalnewsapphilt.View.Adapter.NewsAdapter
 import com.example.globalnewsapphilt.databinding.MainRecyclerViewBinding
 
@@ -39,7 +42,6 @@ class NewsFragment : BaseFragment(), SearchView.OnQueryTextListener {
     ): View {
 
         binding.svSearch.setOnQueryTextListener(this)
-
         binding.rvCommonView.apply {
             layoutManager = LinearLayoutManager(
                 requireContext(),
@@ -49,28 +51,21 @@ class NewsFragment : BaseFragment(), SearchView.OnQueryTextListener {
             getNews()
             adapter = newsAdapter
         }
-
         newsViewModel.getNews()
-
         return binding.root
     }
-
 
     private fun getNews() {
         newsViewModel.news.observe(viewLifecycleOwner) {
 
-            Log.d(TAG, "getNews: $it")
-            println("Here $it")
             when (it) {
                 is UIState.LOADING -> {}
                 is UIState.SUCCESS -> {
-                    Log.d(TAG, "getNews: isSuccessful  ${it.response}")
                   it.response.articles?.let {
                       newsAdapter.updateItems(it)
                   }
                 }
                 is UIState.ERROR -> {
-                    Log.d(TAG, "getNews: Error  ")
                     AlertDialog.Builder(requireActivity())
                         .setTitle("Error occurred")
                         .setMessage(it.error.localizedMessage)
@@ -86,8 +81,25 @@ class NewsFragment : BaseFragment(), SearchView.OnQueryTextListener {
     }
 
     private fun searchByCountry(query: String){
-        newsViewModel.getNews(query)
+        for (Countries in countryList) {
+            if (query == Countries.country) {
+                newsViewModel.getNews(Countries.countryCode)
+            } else if (query == Countries.countryCode) {
+                newsViewModel.getNews(Countries.countryCode)
+            }
+        }
         hideKeyboard()
+    }
+
+    override fun onQueryTextSubmit(query: String?): Boolean{
+
+        if (!query.isNullOrEmpty()){
+
+            searchByCountry(query)
+            Toast.makeText(requireContext(),
+                "$query", Toast.LENGTH_LONG).show()
+        }
+        return true
     }
 
     private fun hideKeyboard(){
@@ -96,18 +108,8 @@ class NewsFragment : BaseFragment(), SearchView.OnQueryTextListener {
         keyboard.hideSoftInputFromWindow(binding.svSearch.windowToken, 0)
     }
 
-   override fun onQueryTextSubmit(query: String?): Boolean{
-        if (!query.isNullOrEmpty()){
-            searchByCountry(query)
-            Toast.makeText(requireContext(),
-                "$query", Toast.LENGTH_LONG).show()
-        }
-        return true
-    }
-
     override fun onQueryTextChange(newSearch: String?): Boolean = true
-
- }
+}
 
 
 
