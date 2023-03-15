@@ -47,6 +47,7 @@ class ArticleFragment : BaseFragment() {
         binding.tvAuthor.text = selectedArticle.author
         binding.tvPublishingDate.text = selectedArticle.publishedAt
         binding.url.text = selectedArticle.url
+        binding.tvSource.text = selectedArticle.source?.name
 
 
 //

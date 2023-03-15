@@ -50,6 +50,7 @@ class NewsViewHolder(
             binding.tvTitle.text = item.title
             binding.tvAuthor.text = item.author
             binding.tvPublishingDate.text = item.publishedAt
+            binding.tvSource.text = item.source?.name
 
             if (item.urlToImage != null) {
                 Glide
