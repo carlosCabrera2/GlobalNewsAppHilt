@@ -4,6 +4,7 @@
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     >
+
         <SearchView
             android:id="@+id/sv_search"
             android:layout_width="match_parent"

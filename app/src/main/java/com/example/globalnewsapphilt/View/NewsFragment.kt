@@ -11,6 +11,7 @@ import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.SearchView
 import android.widget.Toast
+import androidx.core.os.bundleOf
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.globalnewsapphilt.R
@@ -82,7 +83,9 @@ class NewsFragment : BaseFragment(), SearchView.OnQueryTextListener {
 
     private fun searchByCountry(query: String){
         for (Countries in countryList) {
-            if (query == Countries.country) {
+            if (query == Countries.countryLowerCase){
+                newsViewModel.getNews(Countries.countryCode)
+            } else if (query == Countries.country) {
                 newsViewModel.getNews(Countries.countryCode)
             } else if (query == Countries.countryCode) {
                 newsViewModel.getNews(Countries.countryCode)

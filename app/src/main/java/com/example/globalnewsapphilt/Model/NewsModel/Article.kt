@@ -11,7 +11,7 @@ data class Article(
     @SerializedName("description")
     val description: String? = null,
     @SerializedName("publishedAt")
-    val publishedAt: String? = null,
+     val publishedAt: String? = null,
     @SerializedName("source")
     val source: Source? = null,
     @SerializedName("title")

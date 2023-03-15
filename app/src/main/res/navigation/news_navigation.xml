@@ -19,11 +19,18 @@
     <fragment
         android:id="@+id/menu_home_news"
         android:name="com.example.globalnewsapphilt.View.NewsFragment"
-        android:label="News List"
+        android:label="{CountryTitle}"
         tools:layout="@layout/main_recycler_view">
         <action
             android:id="@+id/action_menu_home_to_menu_detail"
             app:destination="@id/menu_detail" />
+
+        <argument
+            android:name="CountryTitle"
+            app:argType="string"
+            >
+
+        </argument>
 
     </fragment>
 

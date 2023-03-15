@@ -16,7 +16,7 @@ class ArticleFragment : BaseFragment() {
         FragmentDetailItemBinding.inflate(layoutInflater)
     }
 
-    var selectedArticle = Article()
+    private var selectedArticle = Article()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -31,20 +31,21 @@ class ArticleFragment : BaseFragment() {
 
     private fun getArticleDetails() {
 
-        Glide
-            .with(binding.root)
-            .load(selectedArticle.urlToImage)
-            .centerCrop()
-            .placeholder(R.drawable.baseline_image_24)
-            .error(R.drawable.baseline_broken_image_24)
-            .into(binding.ivArticleUrl)
-
-        binding.tvContent.text = selectedArticle.description
+        if (selectedArticle.urlToImage != null) {
+            Glide
+                .with(binding.root)
+                .load(selectedArticle.urlToImage)
+                .centerCrop()
+                .placeholder(R.drawable.baseline_image_24)
+                .error(R.drawable.baseline_broken_image_24)
+                .into(binding.ivArticleUrl)
+        }
+        binding.tvContent.text=selectedArticle.content
+        binding.tvDescription.text = selectedArticle.description
         binding.tvTitle.text = selectedArticle.title
         binding.tvAuthor.text = selectedArticle.author
-
         binding.tvPublishingDate.text = selectedArticle.publishedAt
-
+        binding.url.text = selectedArticle.url
     }
 
 }

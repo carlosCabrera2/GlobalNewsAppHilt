@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.navigation.fragment.findNavController
 import com.example.globalnewsapphilt.R
 import com.example.globalnewsapphilt.Utilities.Countries
@@ -60,12 +61,13 @@ class MapFragment: BaseFragment(), OnMarkerClickListener, OnMapClickListener, On
 
 
     override fun onMarkerClick(p0: Marker): Boolean {
-        val country = p0.title
 
             for (Countries in countryList) {
                 if (p0.title == Countries.country) {
                     newsViewModel.getNews(country = Countries.countryCode)
-                    findNavController().navigate(R.id.action_menu_map_to_menu_home)
+                    findNavController().navigate(R.id.action_menu_map_to_menu_home,
+                    bundleOf(Pair("CountryTitle", Countries.country))
+                    )
                 }
             }
         return false

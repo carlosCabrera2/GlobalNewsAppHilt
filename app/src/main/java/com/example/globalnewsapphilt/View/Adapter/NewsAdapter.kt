@@ -38,12 +38,8 @@ class NewsAdapter(
         holder.bind(itemSet[position], onItemClick)
     }
 
-//    override fun onBindViewHolder(holder: NewsViewHolder, position: Int) =
-//        holder.bind(itemSet[position], onItemClick)
     override fun getItemCount(): Int = itemSet.size
 }
-
-
 
 class NewsViewHolder(
     private val binding: FragmentMainItemBinding
@@ -55,19 +51,19 @@ class NewsViewHolder(
             binding.tvAuthor.text = item.author
             binding.tvPublishingDate.text = item.publishedAt
 
-
-            Glide
-                .with(binding.root)
-                .load(item.urlToImage)
-                .centerCrop()
-                .placeholder(R.drawable.baseline_image_24)
-                .error(R.drawable.baseline_broken_image_24)
-                .into(binding.ivArticleUrl)
-
-            itemView.setOnClickListener{
-                Log.d("TAG", "bind: ${item.title}")
-                    onItemClick(item)
+            if (item.urlToImage != null) {
+                Glide
+                    .with(binding.root)
+                    .load(item.urlToImage)
+                    .centerCrop()
+                    .placeholder(R.drawable.baseline_image_24)
+                    .error(R.drawable.baseline_broken_image_24)
+                    .into(binding.ivArticleUrl)
             }
+                itemView.setOnClickListener{
+                    Log.d("TAG", "bind: ${item.title}")
+                        onItemClick(item)
+                }
 
         }
-}
+    }
