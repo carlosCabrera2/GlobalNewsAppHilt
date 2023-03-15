@@ -40,6 +40,17 @@
         android:label="Article Info"
         tools:layout="@layout/fragment_detail_item">
 
+        <action
+            android:id="@+id/action_menu_detail_to_menu_web_page"
+            app:destination="@id/menu_web_page" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/menu_web_page"
+        android:name="com.example.globalnewsapphilt.View.WebPageFragment"
+        android:label="Internet Source"
+        tools:layout="@layout/amu_webview">
+
     </fragment>
 
 </navigation>

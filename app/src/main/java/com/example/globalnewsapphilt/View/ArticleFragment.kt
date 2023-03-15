@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.example.globalnewsapphilt.Model.NewsModel.Article
 import com.example.globalnewsapphilt.R
@@ -46,6 +47,12 @@ class ArticleFragment : BaseFragment() {
         binding.tvAuthor.text = selectedArticle.author
         binding.tvPublishingDate.text = selectedArticle.publishedAt
         binding.url.text = selectedArticle.url
+
+
+//
+        binding.bnSourceLink.setOnClickListener{
+            findNavController().navigate(R.id.action_menu_detail_to_menu_web_page)
+        }
     }
 
 }
